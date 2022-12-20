@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css"
+  th:href="@{/bootstrap/css/bootstrap.min.css}">
+</head>
+<body>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          <h3>Employee Form</h3>
+        </div>
+        <form action="#" th:action="@{/employee}" th:object="${employee}" method="post">
+          <div class="form-group">
+            <label for="fname">FirstName</label>
+            <input type="text" id="fname"
+                   th:classappend="${#fields.hasErrors('firstName')}? 'is-invalid'"
+                   th:field="*{firstName}" class="form-control" required>
+            <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span>
+          </div>
+          <div class="form-group">
+            <label for="lname">LastName</label>
+            <input type="text" id="lname"
+                   th:classappend="${#fields.hasErrors('lastName')}? 'is-invalid'"
+                   th:field="*{lastName}" class="form-control">
+            <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>
+          </div>
+          <div class="form-group">
+            <label for="age">Age</label>
+            <input type="number" id="age"
+                   th:classappend="${#fields.hasErrors('age')}? 'is-invalid'"
+                   th:field="*{age}" class="form-control">
+            <span th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></span>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" id="email"
+                   th:classappend="${#fields.hasErrors('email')}? 'is-invalid'"
+                   th:field="*{email}" class="form-control" >
+            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+          </div>
+
+          <input type="submit" class="btn btn-outline-info btn-block" value="Save Employee">
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
